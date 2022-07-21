@@ -10,7 +10,6 @@ const fetchProducts = async (item) => {
   }
 };
 
-console.log(fetchProducts('computador'));
 if (typeof module !== 'undefined') {
   module.exports = {
     fetchProducts,
