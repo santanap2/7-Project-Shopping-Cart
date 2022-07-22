@@ -46,6 +46,29 @@ const createElements = async () => {
   });
 };
 
-createElements();
+const addToCart = async (itemID) => {
+  const product = await fetchItem(itemID);
+  const { id: sku, title: name, price: salePrice } = product;
+  console.log(sku, name, salePrice);
+  const shoppingCart = document.querySelector('.cart__items');
+  const returnedItens = createCartItemElement({ sku, name, salePrice });
+  shoppingCart.appendChild(returnedItens);
+};
 
-window.onload = async () => { };
+const click = (event) => {
+  const clickReceived = event.target.parentNode;
+  const getSKU = getSkuFromProductItem(clickReceived);
+  addToCart(getSKU);
+};
+
+const eventListener = () => {
+  const buttons = document.querySelectorAll('.item__add');
+  buttons.forEach((one) => {
+    one.addEventListener('click', click);
+  });
+};
+
+window.onload = async () => { 
+  await createElements();
+  eventListener();
+};
