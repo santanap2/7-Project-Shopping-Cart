@@ -31,7 +31,6 @@ const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').inn
 const cartItemClickListener = (event) => {
   event.target.remove();
   saveCartItems(JSON.stringify(cartList.innerHTML));
-  // summingCartItemsPrice();
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -80,8 +79,17 @@ const getDataFromLocalStorage = () => {
   ));
 };
 
+const emptyButton = () => {
+  const button = document.querySelector('.empty-cart');
+  button.addEventListener('click', () => {
+    cartList.innerText = '';
+    console.log('deu certo');
+  });
+};
+
 window.onload = async () => {
   await createElements();
   cartEventListener();
   getDataFromLocalStorage();
+  emptyButton();
 };
