@@ -135,14 +135,14 @@ body {
   height: 100vh;
 }
 
-.cart .cart__items {
-  height: 500px;
-  overflow-y: scroll;
-}
-
 .cart__items {
   margin: 10px;
   padding: 10px;
+}
+
+.cart .cart__items {
+  height: 500px;
+  overflow-y: scroll;
 }
 
 .empty-cart {
