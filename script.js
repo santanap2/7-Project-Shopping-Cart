@@ -1,3 +1,5 @@
+const cartList = document.querySelector('.cart__items');
+
 const createProductImageElement = (imageSource) => {
   const img = document.createElement('img');
   img.className = 'item__image';
@@ -26,8 +28,10 @@ const createProductItemElement = ({ sku, name, image }) => {
 
 const getSkuFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
-const cartItemClickListener = async (event) => {
+const cartItemClickListener = (event) => {
   event.target.remove();
+  saveCartItems(JSON.stringify(cartList.innerHTML));
+  // summingCartItemsPrice();
 };
 
 const createCartItemElement = ({ sku, name, salePrice }) => {
@@ -49,26 +53,35 @@ const createElements = async () => {
 const addToCart = async (itemID) => {
   const product = await fetchItem(itemID);
   const { id: sku, title: name, price: salePrice } = product;
-  console.log(sku, name, salePrice);
-  const shoppingCart = document.querySelector('.cart__items');
   const returnedItens = createCartItemElement({ sku, name, salePrice });
-  shoppingCart.appendChild(returnedItens);
+  cartList.appendChild(returnedItens);
+  saveCartItems(JSON.stringify(cartList.innerHTML));
 };
 
-const click = (event) => {
+const clickEvent = (event) => {
   const clickReceived = event.target.parentNode;
   const getSKU = getSkuFromProductItem(clickReceived);
   addToCart(getSKU);
 };
 
-const eventListener = () => {
+const cartEventListener = () => {
   const buttons = document.querySelectorAll('.item__add');
   buttons.forEach((one) => {
-    one.addEventListener('click', click);
+    one.addEventListener('click', clickEvent);
   });
 };
 
-window.onload = async () => { 
+const getDataFromLocalStorage = () => {
+  const data = JSON.parse(getSavedCartItems());
+  cartList.innerHTML = data;
+  const allCartItems = document.querySelectorAll('.cart__items');
+  allCartItems.forEach((item) => (
+    item.addEventListener('click', cartItemClickListener)
+  ));
+};
+
+window.onload = async () => {
   await createElements();
-  eventListener();
+  cartEventListener();
+  getDataFromLocalStorage();
 };
