@@ -145,6 +145,22 @@ body {
   overflow-y: scroll;
 }
 
+.cart__item {
+  margin: 15px 0;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: rgb(185, 185, 185);
+  list-style-type: none;
+}
+
+.total-price {
+  padding: 15px;
+  text-align: center;
+  margin: 20px;
+  border-radius: 20px;
+  background-color: rgb(190, 190, 190);
+}
+
 .empty-cart {
   width: 170px;
   height: 35px;
