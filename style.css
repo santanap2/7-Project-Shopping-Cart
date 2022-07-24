@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(212, 235, 218);
 }
 
 .header {
@@ -97,8 +97,9 @@ body {
   height: auto;
   margin: 5px;
   width: 200px;
-  border: 2px solid rgb(234, 234, 233);
-  border-radius: 5px;
+  border: 2px solid rgb(3, 52, 45);
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
   box-sizing: border-box;
 }
 
@@ -112,6 +113,8 @@ body {
   flex-grow: 1;
   padding: 10px;
   text-align: center;
+  color: rgb(3, 52, 45);;
+  font-weight: 500;
 }
 
 .item .item__image {
@@ -119,20 +122,21 @@ body {
 }
 
 .item .item__add {
-  background-color: rgb(5, 52, 219);
+  background-color: rgb(3, 52, 45);
   border: 0;
   cursor: pointer;
   margin: 0;
   padding: 10px;
   color: white;
+  border-radius: 15px;
+  font-weight: bold;
 }
 
 .cart {
   display: flex;
   flex-basis: 32%;
   flex-flow: column wrap;
-  background-color: rgb(241, 241, 238);
-  height: 100vh;
+  background-color: rgb(162, 196, 171);
 }
 
 .cart__items {
@@ -141,31 +145,53 @@ body {
 }
 
 .cart .cart__items {
-  height: 500px;
+  height: 600px;
   overflow-y: scroll;
 }
 
 .cart__item {
   margin: 15px 0;
   padding: 10px;
-  border-radius: 20px;
-  background-color: rgb(185, 185, 185);
+  border-radius: 10px;
+  background-color: rgb(10, 118, 79);
+  color: white;
   list-style-type: none;
-}
-
-.total-price {
-  padding: 15px;
-  text-align: center;
-  margin: 20px;
-  border-radius: 20px;
-  background-color: rgb(190, 190, 190);
+  border: 2px solid rgb(3, 52, 45);
 }
 
 .empty-cart {
-  width: 170px;
-  height: 35px;
-  margin: 0 auto;
-  border: 2px solid rgb(5, 52, 219);
-  background-color: rgb(249, 249, 246);
+  border: 0;
+  margin: 0px 15px;
+  padding: 10px;
   cursor: pointer;
+  border-radius: 15px;
+  background-color: rgb(219, 118, 35);
+ color: white;
+ font-weight: 800;
+}
+
+.total-price {
+  padding: 10px;
+  text-align: center;
+  margin: 10px 0px;
+  border-radius: 15px;
+  background-color: rgb(25, 161, 111);
+  color: white;
+  font-weight: 500;
+}
+
+.footer-cart {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.loading {
+  position: absolute;
+  color: white;
+  top: 25px;
+  font-family:cursive;
+  font-style: italic;
+  text-transform:capitalize
 }

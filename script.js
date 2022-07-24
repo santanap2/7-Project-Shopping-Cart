@@ -14,6 +14,19 @@ const createCustomElement = (element, className, innerText) => {
   return e;
 };
 
+// const createLoadingElement = () => {
+//   const element = document.createElement('div');
+//   element.innerText = 'carregando...';
+//   element.className = 'loading';
+//   const items = document.querySelector('.container');
+//   items.appendChild(element);
+// };
+
+// const removeLoadingElement = () => {
+//   const element = document.querySelector('.loading');
+//   element.remove();
+// };
+
 const createProductItemElement = ({ sku, name, image }) => {
   const section = document.createElement('section');
   section.className = 'item';
@@ -37,7 +50,7 @@ const sumPrice = async () => {
     finalPrice += parseFloat(price);
   });
   if (allCartItems.length === 0) totalPrice.innerText = 'Carrinho vazio!';
-  totalPrice.innerText = finalPrice;
+  totalPrice.innerText = `Valor total: R$ ${finalPrice.toFixed(2)}`;
 };
 
 const cartItemClickListener = (event) => {
@@ -46,10 +59,15 @@ const cartItemClickListener = (event) => {
   sumPrice();
 };
 
-const createCartItemElement = ({ sku, name, salePrice }) => {
+const createCartItemElement = ({ name, salePrice }) => {
   const li = document.createElement('li');
+  const removeBtn = document.createElement('div');
+  removeBtn.innerText = 'testando o botao pra ver se deu certo';
+  removeBtn.className = 'remove-btn';
+  li.appendChild(removeBtn);
   li.className = 'cart__item';
-  li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  // li.innerText = `SKU: ${sku} | NAME: ${name} | PRICE: $${salePrice}`;
+  li.innerText = `${name} \n \n  Valor: R$${salePrice.toFixed(2)}`;
   li.addEventListener('click', cartItemClickListener);
   return li;
 };
